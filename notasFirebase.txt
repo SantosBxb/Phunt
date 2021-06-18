@@ -1,0 +1,63 @@
+
+se debe crear la app en firebase 
+npm i firebase firebase-admin
+crear la carpeta firebase con los siguientes archivos 
+  config.js
+  context.js
+  firebase.js
+  index.js
+
+config -> pegar la configuracion que entrega firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyCooFQFXhfMHxeRQ0yPe5lYoaYeAb0NLY4",
+  authDomain: "phunt-74df9.firebaseapp.com",
+  projectId: "phunt-74df9",
+  storageBucket: "phunt-74df9.appspot.com",
+  messagingSenderId: "708304626670",
+  appId: "1:708304626670:web:a2841a7bd9e55e9b7da4ff"
+};
+export default firebaseConfig; 
+  
+
+firebase -> crear  clase y constructor de firebase
+import app from "firebase/app";
+import "firebase/auth"; // autenticacion de firebase
+import firebaseConfig from "./config";
+class Firebase {
+  constructor() {
+    if (!app.apps.length) {
+      app.initializeApp(firebaseConfig);
+    }
+  }
+
+  // debajo van los metodos a utilizar, crearCuenta, iniciarSesion....
+}
+const firebase = new Firebase();
+export default firebase;
+
+
+context -> crear context para firebase
+import React, { createContext } from "react";
+const FirebaseContext = createContext(null);
+export default FirebaseContext;
+
+index -> se crea para poder utilizar el context y firebase desde un mismo lugar 
+import firebase from "./firebase";
+import FirebaseContext from "../firebase/context";
+export { FirebaseContext };
+export default firebase;
+
+_app se le debe pasar el context de firebase para usar los datos en cualquier pagina
+como value se pasara firebase, para poder usarlo desde todas los componentes 
+
+
+para autenticar usuarios se crean hooks que se encargan de eso
+
+para subir imagenes se instala
+  npm install --legacy-peer-deps react-firebase-file-uploader
+
+
+para hacer eldeply en firebase 
+  se debe tenr instalado firebase-tools
+  firebase login
+  firebase init hosting

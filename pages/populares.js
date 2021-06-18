@@ -1,11 +1,11 @@
 import React from "react";
-import Layout from "../components/layouts/Layout";
 import DetallesProductos from "../components/layouts/DetallesProducto";
+import Layout from "../components/layouts/Layout";
 import useProductos from "../hooks/useProductos";
 
-export default function Home() {
-
-  const {productos} = useProductos('creado');
+export default function Populares() {
+  
+  const {productos} = useProductos('votos');
 
   return (
     <div>

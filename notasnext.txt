@@ -1,0 +1,30 @@
+create-next-app nombre --> crear app 
+
+para poder usar styled components se deb instlar
+  npm i @emotion/react @emotion/styled babel-plugin-emotion @emotion/babel-preset-css-prop
+y crear .babelrc
+{
+  "presets":[
+    "next/babel",
+    "@emotion/babel-preset-css-prop"
+  ],
+  "plugins": [
+    [
+      "@emotion"
+    ]
+  ]
+}
+
+_app.js -> es un componente para inicializar paginas, lo que se entre en ella, lo tendras todas las paginas, es como el app.js de create-reacct-app, se puden poner los styles globales 
+
+_document.js -> se utiliza manejar el Html y Head, se pueden definiir los metadatos que seran utilizados en todas las paginas 
+
+Routing Dianmico
+  se debe crear una carpeta en pages, la cual debe contener los componentes que se desea que sean dinamicos
+  ejemplo, se crea una carpeta productos y un componente [id].js, a [id].js se le ira pasando el id de cada producto
+
+  en [id].js se debe importar useRouter, y llamar a router 
+  router = useRouter()
+  depsues de debe obtener el query (en este caso es el id)
+  {query: {id}} = router 
+   
